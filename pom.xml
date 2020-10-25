@@ -43,6 +43,14 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
