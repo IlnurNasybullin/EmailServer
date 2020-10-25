@@ -12,7 +12,7 @@ import static org.example.app.filters.FilterData.AUTHENTICATION_SERVER;
 import static org.example.app.filters.FilterData.REGISTRATION;
 
 @WebFilter("/email/registration")
-public class RegistrationFilter extends AbstractFilter {
+public class RegistrationFilter extends CookieFilter {
 
     @Override
     protected int getCorrectStatus() {

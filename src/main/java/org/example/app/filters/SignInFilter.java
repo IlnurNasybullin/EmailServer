@@ -10,7 +10,7 @@ import java.net.URL;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
 @WebFilter(value = "/email/sign", initParams = @WebInitParam(name = "email", value = "email"))
-public class SignInFilter extends AbstractFilter {
+public class SignInFilter extends CookieFilter {
     @Override
     protected int getCorrectStatus() {
         return SC_OK;

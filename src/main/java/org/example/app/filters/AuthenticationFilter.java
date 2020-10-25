@@ -11,7 +11,7 @@ import java.net.URL;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
 @WebFilter("/email/main")
-public class AuthenticationFilter extends AbstractFilter {
+public class AuthenticationFilter implements Filter {
 
     public static final String COOKIE = "Cookie";
 
@@ -24,27 +24,23 @@ public class AuthenticationFilter extends AbstractFilter {
         sendData(connection, request);
 
         int code = connection.getResponseCode();
-        System.out.println(code);
         if (code == getCorrectStatus()) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            response.setStatus(code);
+            response.sendRedirect("http://localhost:9001/email");
         }
     }
 
-    @Override
-    protected int getCorrectStatus() {
+    private int getCorrectStatus() {
         return SC_OK;
     }
 
-    @Override
-    protected void sendData(HttpURLConnection connection, HttpServletRequest request) throws IOException {
+    private void sendData(HttpURLConnection connection, HttpServletRequest request) throws IOException {
         connection.setRequestProperty(COOKIE, request.getHeader(COOKIE));
         connection.connect();
     }
 
-    @Override
-    protected HttpURLConnection getConnection(HttpServletRequest request) throws IOException {
+    private HttpURLConnection getConnection(HttpServletRequest request) throws IOException {
         URL url = new URL(FilterData.AUTHENTICATION_SERVER + FilterData.AUTHENTICATION);
         return (HttpURLConnection) url.openConnection();
     }

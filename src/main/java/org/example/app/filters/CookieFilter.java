@@ -15,9 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
-import static javax.servlet.http.HttpServletResponse.SC_CREATED;
-
-public abstract class AbstractFilter implements Filter {
+public abstract class CookieFilter implements Filter {
 
     private final static JsonDeserializer<Cookie> cookieDeserializer;
 
@@ -64,7 +62,6 @@ public abstract class AbstractFilter implements Filter {
             setCookie(connection, response);
             filterChain.doFilter(request, response);
         }
-        response.setStatus(code);
     }
 
     protected abstract int getCorrectStatus();
