@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class User implements Serializable {
+
     private String name;
     private String email;
     private String password;
+
+    public User() {}
 
     public String getName() {
         return name;

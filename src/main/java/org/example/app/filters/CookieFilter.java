@@ -8,9 +8,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -49,28 +48,7 @@ public abstract class CookieFilter implements Filter {
         };
     }
 
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-
-        HttpURLConnection connection = getConnection(request);
-        sendData(connection, request);
-
-        int code = connection.getResponseCode();
-        if (code == getCorrectStatus()) {
-            setCookie(connection, response);
-            filterChain.doFilter(request, response);
-        }
-    }
-
-    protected abstract int getCorrectStatus();
-
-    protected abstract void sendData(HttpURLConnection connection, HttpServletRequest request) throws IOException;
-
-    protected abstract HttpURLConnection getConnection(HttpServletRequest request) throws IOException;
-
-    private void setCookie(HttpURLConnection connection, HttpServletResponse response) throws IOException {
+    protected void setCookie(HttpURLConnection connection, HttpServletResponse response) throws IOException {
         ObjectMapper mapper = getMapper();
         Cookie cookie = mapper.readValue(connection.getInputStream(), Cookie.class);
         response.addCookie(cookie);

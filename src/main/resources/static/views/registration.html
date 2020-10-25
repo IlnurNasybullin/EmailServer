@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="registration-form form">
+    <div class ="title content">
+        <h2>Registration</h2>
+    </div>
+
+    <form class="login-password email" method="POST" action="http://localhost:9001/email/registration">
+        <div class="login-form">
+            <input type="text" name="name" class="login input" placeholder="name" required minlength="1"/>
+        </div>
+        <div class="email-form">
+            <input type="email" name="email" class="email input" placeholder="email" required minlength="1">
+        </div>
+        <div class="password-form">
+            <input type="password" name="password" class="password input" placeholder="password" required minlength="8"/>
+        </div>
+        <div class="submit">
+            <input type="submit" value="Registration" class="all-size"/>
+        </div>
+    </form>
+</div>
+</body>
+
+<script src="../js/registration.js"></script>
+
+</html>
