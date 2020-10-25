@@ -62,6 +62,7 @@ public abstract class AbstractFilter implements Filter {
         int code = connection.getResponseCode();
         if (code == getCorrectStatus()) {
             setCookie(connection, response);
+            filterChain.doFilter(request, response);
         }
         response.setStatus(code);
     }

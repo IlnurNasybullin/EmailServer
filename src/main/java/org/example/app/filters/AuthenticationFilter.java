@@ -10,7 +10,7 @@ import java.net.URL;
 
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
-@WebFilter("/email/something")
+@WebFilter("/email/main")
 public class AuthenticationFilter extends AbstractFilter {
 
     public static final String COOKIE = "Cookie";
@@ -24,6 +24,7 @@ public class AuthenticationFilter extends AbstractFilter {
         sendData(connection, request);
 
         int code = connection.getResponseCode();
+        System.out.println(code);
         if (code == getCorrectStatus()) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
