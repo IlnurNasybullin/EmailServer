@@ -17,7 +17,7 @@ import static org.example.app.filters.FilterData.AUTHENTICATION_SERVER;
 import static org.example.app.filters.FilterData.REGISTRATION;
 
 @WebFilter("/email/registration")
-public class RegistrationFilter extends CookieFilter {
+public class RegistrationFilter extends AuthorizationFilter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

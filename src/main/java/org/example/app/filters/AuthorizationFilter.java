@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
-public abstract class CookieFilter implements Filter {
+public abstract class AuthorizationFilter implements Filter {
 
     private final static JsonDeserializer<Cookie> cookieDeserializer;
 

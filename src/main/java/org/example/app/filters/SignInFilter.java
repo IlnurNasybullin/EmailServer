@@ -14,7 +14,7 @@ import java.net.URL;
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
 @WebFilter(value = "/email/sign")
-public class SignInFilter extends CookieFilter {
+public class SignInFilter extends AuthorizationFilter {
 
     private int getCorrectStatus() {
         return SC_OK;
