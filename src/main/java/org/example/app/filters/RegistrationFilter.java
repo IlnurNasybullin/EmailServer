@@ -32,7 +32,7 @@ public class RegistrationFilter extends AuthorizationFilter {
             setCookie(connection, response);
             filterChain.doFilter(request, response);
         } else {
-            response.sendRedirect("http://localhost:9001/email/registration_form");
+            response.sendRedirect("http://localhost:9001/email/registration_form?isCorrect=false");
         }
     }
 

@@ -1,33 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Email</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8" />
+    <title>Sign In</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
 <body>
-<div class="form">
-    <div class="title content">
-        <h2>Sign In</h2>
-    </div>
-    <form class="login-password" method="GET" action="http://localhost:9001/email/sign">
-        <div class="login-form">
-            <input type="email" name="email" class="login input" placeholder="email" required minlength="1"/>
-            <span class="error" aria-live="polite"></span>
+    <form class="login-div" method="get" action="http://localhost:9001/email/sign">
+        <div class="logo"></div>
+        <div class="title">Email</div>
+        <div class="fields">
+            <div class="input-field email">
+                <input type="email" name="email" class="email-input" placeholder="email" required minlength="1"/>
+            </div>
+            <div class="input-field password">
+                <input type="password" name="password" class="pass-input" placeholder="password" required minlength="8"/>
+            </div>
         </div>
-        <div class="password-form">
-            <input type="password" name="password" class="password input" placeholder="password" required minlength="8"/>
+        <div class="error">
+            <p>Error! Email/password is/are incorrect!</p>
         </div>
-        <div class="input registration-link">
-            <a href="http://localhost:9001/email/registration_form">I haven't account. Create account</a>
-        </div>
-        <div class="submit">
-            <input type="submit" value="Sing in" class="all-size"/>
+        <input type="submit" class="signin-button" value="Login"/>
+        <div class="link">
+            <a href="http://localhost:9001/email/registration_form">Sign up</a>
         </div>
     </form>
-</div>
 </body>
 
-<script src = "js/sign.js"></script>
+<script src="js/sign.js"></script>
 
 </html>

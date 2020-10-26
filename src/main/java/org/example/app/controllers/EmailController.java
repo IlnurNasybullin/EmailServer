@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -13,12 +14,12 @@ import java.io.IOException;
 public class EmailController {
 
     @GetMapping
-    public String signInForm() {
+    public String signInForm(@RequestParam(defaultValue = "true") boolean isCorrect) {
         return "sign";
     }
 
     @GetMapping("registration_form")
-    public String registrationForm() {
+    public String registrationForm(@RequestParam(defaultValue = "true") boolean isCorrect) {
         return "registration";
     }
 

@@ -1,5 +1,13 @@
-var submitForm = document.querySelector('.form')
-var email = document.querySelector('.login')
+const url = new URL(window.location.href);
+let error = document.querySelector('.error');
+if (url.searchParams.get("isCorrect") == 'false') {
+    error.style.display = 'block';
+} else {
+    error.style.display = 'none';
+}
+
+var submitForm = document.querySelector('.login-div')
+var email = document.querySelector('.email')
 var passwordForm = document.querySelector('.password');
 
 const minLength = 8;

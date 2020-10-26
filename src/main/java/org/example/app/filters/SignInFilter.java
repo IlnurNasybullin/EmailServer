@@ -42,7 +42,7 @@ public class SignInFilter extends AuthorizationFilter {
             setCookie(connection, response);
             filterChain.doFilter(request, response);
         } else {
-            response.sendRedirect("http://localhost:9001/email");
+            response.sendRedirect("http://localhost:9001/email?isCorrect=false");
         }
     }
 }
