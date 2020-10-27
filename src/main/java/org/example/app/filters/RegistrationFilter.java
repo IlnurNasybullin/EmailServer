@@ -1,5 +1,8 @@
 package org.example.app.filters;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -42,7 +45,7 @@ public class RegistrationFilter extends AuthorizationFilter {
 
     private void sendData(HttpURLConnection connection, HttpServletRequest request) throws IOException {
         connection.setDoOutput(true);
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setRequestProperty(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE);
 
         byte[] bytes = request.getInputStream().readAllBytes();
 
