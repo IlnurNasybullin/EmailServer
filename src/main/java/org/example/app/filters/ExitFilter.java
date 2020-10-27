@@ -10,9 +10,8 @@ import java.net.URL;
 
 import static javax.servlet.http.HttpServletResponse.SC_OK;
 
-@WebFilter("/email/main")
-public class AuthenticationFilter implements Filter {
-
+@WebFilter("/email/exit")
+public class ExitFilter implements Filter {
     public static final String COOKIE = "Cookie";
 
     @Override
@@ -41,7 +40,7 @@ public class AuthenticationFilter implements Filter {
     }
 
     private HttpURLConnection getConnection() throws IOException {
-        URL url = new URL(FilterData.AUTHENTICATION_SERVER + FilterData.AUTHENTICATION);
+        URL url = new URL(FilterData.AUTHENTICATION_SERVER + FilterData.EXIT);
         return (HttpURLConnection) url.openConnection();
     }
 }

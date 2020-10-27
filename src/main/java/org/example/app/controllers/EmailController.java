@@ -35,7 +35,11 @@ public class EmailController {
 
     @GetMapping("main")
     public String main() {
-        return "index";
+        return "main";
     }
 
+    @GetMapping("exit")
+    public void exit(HttpServletResponse response) throws IOException {
+        response.sendRedirect("http://localhost:9001/email/main");
+    }
 }

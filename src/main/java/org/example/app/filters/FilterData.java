@@ -5,4 +5,5 @@ public interface FilterData {
     String REGISTRATION = "registration";
     String SIGN_IN = "sign";
     String AUTHENTICATION = "authentication";
+    String EXIT = "exit";
 }
