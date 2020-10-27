@@ -21,9 +21,17 @@ public class AuthenticationFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpURLConnection connection = getConnection();
-        sendData(connection, request);
+
+        try {
+            sendData(connection, request);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("http://localhost:9001/" + 500);
+            return;
+        }
 
         int code = connection.getResponseCode();
+
         if (code == getCorrectStatus()) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {

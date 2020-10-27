@@ -27,10 +27,18 @@ public class RegistrationFilter extends AuthorizationFilter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        HttpURLConnection connection = getConnection(request);
-        sendData(connection, request);
+        HttpURLConnection connection = getConnection();
+
+        try {
+            sendData(connection, request);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("http://localhost:9001/" + 500);
+            return;
+        }
 
         int code = connection.getResponseCode();
+
         if (code == getCorrectStatus()) {
             setCookie(connection, response);
             filterChain.doFilter(request, response);
@@ -55,7 +63,7 @@ public class RegistrationFilter extends AuthorizationFilter {
         connection.connect();
     }
 
-    private HttpURLConnection getConnection(HttpServletRequest request) throws IOException {
+    private HttpURLConnection getConnection() throws IOException {
         URL url = new URL(AUTHENTICATION_SERVER + REGISTRATION);
         return (HttpURLConnection) url.openConnection();
     }

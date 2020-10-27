@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -20,7 +21,7 @@ public class SignInFilter extends AuthorizationFilter {
         return SC_OK;
     }
 
-    private void sendData(HttpURLConnection connection, HttpServletRequest request) throws IOException {
+    private void sendData(HttpURLConnection connection) throws IOException {
         connection.connect();
     }
 
@@ -35,7 +36,14 @@ public class SignInFilter extends AuthorizationFilter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         HttpURLConnection connection = getConnection(request);
-        sendData(connection, request);
+
+        try {
+            sendData(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("http://localhost:9001/" + 500);
+            return;
+        }
 
         int code = connection.getResponseCode();
         if (code == getCorrectStatus()) {
