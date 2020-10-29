@@ -17,7 +17,7 @@ import static javax.servlet.http.HttpServletResponse.SC_OK;
 import static org.example.app.filters.FilterData.*;
 import static org.example.app.data.DataURL.*;
 
-@WebFilter("/email/main")
+@WebFilter(urlPatterns = {"/email/main", "/email/sign"})
 public class AuthenticationFilter implements Filter {
 
     public final static Logger logger = Logger.getLogger(AuthenticationFilter.class.getName());
