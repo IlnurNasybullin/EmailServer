@@ -62,7 +62,7 @@ public class EmailController {
 
     @GetMapping("exit")
     public void exit(HttpServletResponse response) throws IOException {
-        logger.info("Response on registration in system");
+        logger.info("Response on sign in system");
         response.sendRedirect(EMAIL);
         logger.log(Level.INFO, "Response received to", EMAIL);
     }

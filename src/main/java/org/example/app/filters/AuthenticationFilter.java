@@ -17,7 +17,7 @@ import static javax.servlet.http.HttpServletResponse.SC_OK;
 import static org.example.app.filters.FilterData.*;
 import static org.example.app.data.DataURL.*;
 
-@WebFilter(urlPatterns = {"/email/main", "/email/sign"})
+@WebFilter(urlPatterns = {"/email/main"})
 public class AuthenticationFilter implements Filter {
 
     public final static Logger logger = Logger.getLogger(AuthenticationFilter.class.getName());
@@ -53,6 +53,9 @@ public class AuthenticationFilter implements Filter {
         logger.log(Level.INFO, "Response code from authentication server" ,code);
 
         if (code == getCorrectStatus()) {
+            response.addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.addHeader("Pragma", "no-cache");
+            response.addHeader("Expires", "0");
             logger.info("Response is send to controller");
             filterChain.doFilter(servletRequest, servletResponse);
         } else {

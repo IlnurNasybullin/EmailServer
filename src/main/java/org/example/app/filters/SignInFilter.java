@@ -72,6 +72,9 @@ public class SignInFilter extends AuthorizationFilter {
 
         if (code == getCorrectStatus()) {
             setCookie(connection, response);
+            response.addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.addHeader("Pragma", "no-cache");
+            response.addHeader("Expires", "0");
             logger.info("Cookie is set. Response is send to controller");
             filterChain.doFilter(request, response);
         } else {
