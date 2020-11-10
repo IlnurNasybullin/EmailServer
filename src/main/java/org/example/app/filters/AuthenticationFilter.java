@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ import static javax.servlet.http.HttpServletResponse.SC_OK;
 import static org.example.app.filters.FilterData.*;
 import static org.example.app.data.DataURL.*;
 
-@WebFilter(urlPatterns = {"/email/main"})
+@WebFilter(urlPatterns = {"/email/main", "/email/personal"})
 public class AuthenticationFilter implements Filter {
 
     public final static Logger logger = Logger.getLogger(AuthenticationFilter.class.getName());

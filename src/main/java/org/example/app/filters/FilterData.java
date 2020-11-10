@@ -11,6 +11,8 @@ public interface FilterData {
     String AUTHENTICATION = "authorize";
     String EXIT = "exit";
 
+    String GET_EMAIL = "getEmail";
+
     String BAD_PAGE_URL = "http://localhost:9001/error/";
 
     String COOKIE = "Cookie";

@@ -1,0 +1,13 @@
+.container {
+	margin-top: 200px;
+	width: 800px;
+}
+
+.buttons {
+	margin-top: 40px;
+	margin-left: 500px;
+}
+
+button {
+	margin-left: 30px;
+}

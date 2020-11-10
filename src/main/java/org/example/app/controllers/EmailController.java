@@ -1,19 +1,26 @@
 package org.example.app.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.app.loggers.MyFormatter;
+import org.example.app.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static org.example.app.data.DataURL.*;
+import static org.example.app.data.DataURL.EMAIL;
+import static org.example.app.data.DataURL.EMAIL_MAIN;
+import static org.example.app.filters.FilterData.*;
 
 @Controller
 @RequestMapping("email")
@@ -65,5 +72,11 @@ public class EmailController {
         logger.info("Response on sign in system");
         response.sendRedirect(EMAIL);
         logger.log(Level.INFO, "Response received to", EMAIL);
+    }
+
+    @GetMapping("personal")
+    public String personalAccount() {
+        logger.info("Response on personal account page");
+        return "personal";
     }
 }
