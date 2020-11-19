@@ -30,6 +30,7 @@ public class UserRepository implements org.example.app.repositories.Repository<U
     private JdbcOperations jdbcOperations;
 
     public static final String selectQuery = "SELECT * FROM \"%s\" WHERE \"%s\" = ?;";
+    public static final String updateQuery = "UPDATE \"%s\" SET \"%s\" = ?, \"%s\" = ? WHERE \"%s\" = ?;";
 
     @Override
     public User select(Object email) {
@@ -48,5 +49,14 @@ public class UserRepository implements org.example.app.repositories.Repository<U
         }
 
         return null;
+    }
+
+    @Override
+    public boolean update(User user) {
+        String query = String.format(updateQuery, tableName, nameColumn, passwordColumn, emailColumn);
+
+        Object[] objects = {user.getName(), user.getPassword(), user.getEmail()};
+        int[] types = {Types.VARCHAR, Types.VARCHAR, Types.VARCHAR};
+        return jdbcOperations.update(query, objects, types) > 0;
     }
 }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +23,6 @@ import java.util.logging.Logger;
 
 import static org.example.app.data.DataURL.EMAIL;
 import static org.example.app.filters.FilterData.*;
-import static org.example.app.filters.FilterData.COOKIE;
 
 @Controller
 @RequestMapping("email")
@@ -74,5 +75,19 @@ public class DataController {
         }
 
         return null;
+    }
+
+    @PostMapping("/saveUser")
+    public void save(@RequestBody User user, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        logger.info("Response for saving personal data of user");
+        String email = getEmail(request, response);
+        user.setEmail(email);
+        if (userRepository.update(user)) {
+            logger.info("User data is updated in database");
+            response.setStatus(HttpServletResponse.SC_CREATED);
+        } else {
+            logger.warning("User data isn't updated in database");
+            response.setStatus(HttpServletResponse.SC_OK);
+        }
     }
 }
