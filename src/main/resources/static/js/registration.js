@@ -24,7 +24,7 @@ function checkPassword(password) {
 }
 
 function checkEmail(email) {
-    return !isEmpty(email) && email.match(/.+@.+\..+/i) !== null;
+    return !isEmpty(email) && !email.includes(' ') && email.match(/.+@.+\..+/i) !== null;
 }
 
 function isEmpty(str) {
