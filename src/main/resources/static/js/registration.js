@@ -20,11 +20,11 @@ var without_trims = function(e) {
 }
 
 function checkPassword(password) {
-    return !isEmpty(password) && password.length >= minLength;
+    return !isEmpty(password) && password.length >= minLength && !password.includes(' ');
 }
 
 function checkEmail(email) {
-    return !isEmpty(email) && !email.includes(' ') && email.match(/.+@.+\..+/i) !== null;
+    return !isEmpty(email) && email.match(/.+@.+\..+/i) !== null;
 }
 
 function isEmpty(str) {
