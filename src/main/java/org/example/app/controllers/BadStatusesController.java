@@ -1,6 +1,5 @@
 package org.example.app.controllers;
 
-import org.example.app.App;
 import org.example.app.loggers.MyFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

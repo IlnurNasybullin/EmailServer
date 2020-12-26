@@ -14,8 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static javax.servlet.http.HttpServletResponse.SC_OK;
-import static org.example.app.filters.FilterData.*;
 import static org.example.app.data.DataURL.*;
+import static org.example.app.filters.FilterData.COOKIE;
+import static org.example.app.filters.FilterData.getBadPageURL;
 
 @WebFilter("/email/exit")
 public class ExitFilter implements Filter {

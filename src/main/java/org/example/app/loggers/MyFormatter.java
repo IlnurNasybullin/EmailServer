@@ -2,7 +2,6 @@ package org.example.app.loggers;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Formatter;

@@ -1,9 +1,5 @@
 package org.example.app.filters;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.EnumSet;
-import java.util.Set;
-
 public interface FilterData {
     String AUTHENTICATION_SERVER = "http://host.docker.internal:9000/";
     String REGISTRATION = "registration";
